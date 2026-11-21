@@ -1,0 +1,23 @@
+{
+  "name": "electron-mac-release",
+  "version": "1.0.0",
+  "description": "Package, sign, notarise and publish an Electron app for macOS to GitHub Releases, with a Squirrel.Mac update manifest.",
+  "type": "module",
+  "bin": {
+    "electron-mac-release": "bin/cli.mjs"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@electron/packager": "^20.3.0"
+  },
+  "license": "MIT"
+}
