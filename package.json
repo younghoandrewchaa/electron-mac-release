@@ -1,6 +1,6 @@
 {
   "name": "electron-mac-release",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Package, sign, notarise and publish an Electron app for macOS to GitHub Releases, with a Squirrel.Mac update manifest.",
   "type": "module",
   "bin": {
