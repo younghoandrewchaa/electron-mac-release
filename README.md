@@ -5,7 +5,7 @@ Packages an Electron app for macOS, signs and notarises it, and publishes it to 
 ## Install
 
 ```sh
-npm i -D github:<owner>/electron-mac-release#v1.0.0
+npm install -D electron-mac-release
 ```
 
 ## Configure
