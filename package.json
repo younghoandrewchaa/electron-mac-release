@@ -11,7 +11,8 @@
     "lib"
   ],
   "scripts": {
-    "test": "node --test test/"
+    "test": "node --test test/",
+    "publish:package": "node --test test/ && npm login --auth-type=web --registry=https://registry.npmjs.org && npm publish"
   },
   "engines": {
     "node": ">=22"
