@@ -14,10 +14,12 @@ Add a `macRelease` block to the app's `package.json`. The app name comes from `p
 
 ```json
 "scripts": {
+  "build": "tsc && electron-mac-release prepare",
   "package": "npm run build && electron-mac-release package",
   "release": "electron-mac-release release"
 },
 "macRelease": {
+  "assets": { "src/index.html": "dist/index.html", "src/assets": "dist/assets" },
   "include": ["dist"],
   "preRelease": ["npm test", "npm run build"],
   "keychainProfile": "app-signing-profile",
@@ -34,6 +36,7 @@ Add a `macRelease` block to the app's `package.json`. The app name comes from `p
 | Key | Default | Meaning |
 | --- | --- | --- |
 | `packager` | required | Passed straight to `@electron/packager`. `appBundleId` is required. |
+| `assets` | `{}` | Maps source files or directories to exact destination paths, relative to the app root. Directories are copied recursively. |
 | `include` | everything | Top-level entries to ship. `package.json` is always kept. |
 | `preRelease` | `[]` | Shell commands run before packaging a release. Put your build here. |
 | `keychainProfile` | `app-signing-profile` | `notarytool` keychain profile used for notarisation. |
@@ -42,6 +45,7 @@ Add a `macRelease` block to the app's `package.json`. The app name comes from `p
 
 ## Commands
 
+- `electron-mac-release prepare` copies configured assets, creating parent directories and overwriting matching files. Run it as part of your app build.
 - `electron-mac-release package` packages an unsigned app. Add `--sign` to sign and notarise it.
 - `electron-mac-release release "Release notes"` checks that the tree is clean and the version is unreleased, runs `preRelease`, packages, signs, notarises and verifies the app, zips it with `ditto`, writes the update manifest, tags the commit, uploads both files to a draft release and publishes it as the latest. Without notes it prompts for them.
 
